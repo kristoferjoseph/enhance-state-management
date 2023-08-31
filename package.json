@@ -1,0 +1,35 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "sandbox",
+    "lint": "eslint ./app/**/*.mjs --fix"
+  },
+  "devDependencies": {
+    "@architect/sandbox": "latest",
+    "eslint": "latest"
+  },
+  "dependencies": {
+    "@begin/validator": "^1.0.1",
+    "@enhance/arc-plugin-enhance": "latest",
+    "@enhance/custom-element": "^1.0.1",
+    "@enhance/morphdom-mixin": "^1.0.0",
+    "@enhance/store": "^1.0.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "rules": {
+      "indent": [
+        "error",
+        2
+      ]
+    },
+    "ignorePatterns": [],
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2022
+    }
+  }
+}
