@@ -884,16 +884,18 @@ const MorphdomMixin = (superclass) => class extends superclass {
 function TodosList({ html, state }) {
   const { store={} } = state;
   const { todos=[] } = store;
-  const items = todos.map(({ completed, key, text })  => html`
+  const items = todos.map(({ completed, key, text })  => {
+    completed = completed.toString() === 'true';
+    return html`
     <li id="${key}">
       <todos-item
         class="flex"
-        completed="${completed.toString()}"
+        ${completed ? 'completed' : ''}
         key="${key}"
         text="${text}"
       ></todos-item>
     </li>
-  `)
+  `})
     .join('\n');
   return html`
     <ul>
@@ -904,8 +906,8 @@ function TodosList({ html, state }) {
 
 function TodosItem({ html, state }) {
   const { attrs } = state;
-  const { completed='', created='', key='', text='' } = attrs;
-  const checked = completed.toString() === 'true'
+  const { created='', key='', text='' } = attrs;
+  const checked = Object.keys(attrs).includes('completed')
     ? 'checked'
     : '';
 
