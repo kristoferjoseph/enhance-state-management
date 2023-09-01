@@ -1,7 +1,9 @@
 export default function TodosItem({ html, state }) {
   const { attrs } = state
   const { completed='', created='', key='', text='' } = attrs
-  const checked = completed === 'true' ? 'checked' : ''
+  const checked = completed.toString() === 'true'
+    ? 'checked'
+    : ''
 
   return html`
     <form
@@ -14,6 +16,7 @@ export default function TodosItem({ html, state }) {
      method="POST"
     >
       <input
+        id="check-${key}"
         class="
          inline-block
          mr1
@@ -22,6 +25,7 @@ export default function TodosItem({ html, state }) {
         name="completed"
         type="checkbox"
         ${checked}
+
       >
       <input
         type="text"

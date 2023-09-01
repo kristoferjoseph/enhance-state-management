@@ -5,8 +5,7 @@ export default function TodosList({ html, state }) {
     <li id="${key}">
       <todos-item
         class="flex"
-        completed="${completed}"
-        id="ti-${key}"
+        completed="${completed.toString()}"
         key="${key}"
         text="${text}"
       ></todos-item>

@@ -1,4 +1,5 @@
 export default function TodosCreate({ html, state }) {
+  const { instanceID='' } = state
   const borderClasses = `
     border1
     border-solid
@@ -24,11 +25,12 @@ export default function TodosCreate({ html, state }) {
       "
     >
       <label
-        for="text"
+        for="text-${instanceID}"
       >
         Text
       </label>
       <input
+        id="text-${instanceID}"
         class="
          ${borderClasses}
         "

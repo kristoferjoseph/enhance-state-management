@@ -888,8 +888,7 @@ function TodosList({ html, state }) {
     <li id="${key}">
       <todos-item
         class="flex"
-        completed="${completed}"
-        id="ti-${key}"
+        completed="${completed.toString()}"
         key="${key}"
         text="${text}"
       ></todos-item>
@@ -906,7 +905,9 @@ function TodosList({ html, state }) {
 function TodosItem({ html, state }) {
   const { attrs } = state;
   const { completed='', created='', key='', text='' } = attrs;
-  const checked = completed === 'true' ? 'checked' : '';
+  const checked = completed.toString() === 'true'
+    ? 'checked'
+    : '';
 
   return html`
     <form
@@ -919,6 +920,7 @@ function TodosItem({ html, state }) {
      method="POST"
     >
       <input
+        id="check-${key}"
         class="
          inline-block
          mr1
@@ -927,6 +929,7 @@ function TodosItem({ html, state }) {
         name="completed"
         type="checkbox"
         ${checked}
+
       >
       <input
         type="text"
@@ -1175,6 +1178,7 @@ class EnhanceElement extends MorphdomMixin(CustomElement) {
     super();
     this.api = api;
     this.store = api.store;
+    this.log = this.log.bind(this);
     this.store.subscribe(this.process, this.keys);
   }
 
@@ -1215,6 +1219,10 @@ class TodosListElement extends EnhanceElement {
   keys = ['todos']
   constructor() {
     super();
+  }
+
+  connectedCallback() {
+    this.api.list();
   }
 
   render(args) {
