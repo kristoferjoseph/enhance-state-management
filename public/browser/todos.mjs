@@ -1178,7 +1178,6 @@ class EnhanceElement extends MorphdomMixin(CustomElement) {
     super();
     this.api = api;
     this.store = api.store;
-    this.log = this.log.bind(this);
     this.store.subscribe(this.process, this.keys);
   }
 
