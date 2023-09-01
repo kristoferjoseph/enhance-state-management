@@ -885,7 +885,7 @@ function TodosList({ html, state }) {
   const { store={} } = state;
   const { todos=[] } = store;
   const items = todos.map(({ completed, key, text })  => {
-    completed = completed.toString() === 'true';
+    completed = completed?.toString() === 'true';
     return html`
     <li id="${key}">
       <todos-item
@@ -1230,7 +1230,6 @@ class TodosListElement extends EnhanceElement {
     return TodosList(args)
   }
 }
-
 customElements.define('todos-list', TodosListElement);
 
 class TodosItemElement extends EnhanceElement {
@@ -1278,7 +1277,7 @@ class TodosItemElement extends EnhanceElement {
 
   updateChecked(e) {
     e && e.preventDefault();
-    // Would be nice to be able to set the checked state _before_ making the api call.
+    // 👆That doesn't really work. Would be nice to be able to set the checked state _before_ making the api call.
     this.update();
   }
 

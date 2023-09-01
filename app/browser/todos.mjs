@@ -3,7 +3,6 @@ import CustomElement from '@enhance/custom-element'
 import MorphdomMixin from '@enhance/morphdom-mixin'
 import TodosList from '../elements/todos/list.mjs'
 import TodosItem from '../elements/todos/item.mjs'
-
 import API from './api.mjs'
 const api = API()
 
@@ -63,7 +62,6 @@ class TodosListElement extends EnhanceElement {
     return TodosList(args)
   }
 }
-
 customElements.define('todos-list', TodosListElement)
 
 class TodosItemElement extends EnhanceElement {
@@ -111,7 +109,7 @@ class TodosItemElement extends EnhanceElement {
 
   updateChecked(e) {
     e && e.preventDefault()
-    // Would be nice to be able to set the checked state _before_ making the api call.
+    // 👆That doesn't really work. Would be nice to be able to set the checked state _before_ making the api call.
     this.update()
   }
 
