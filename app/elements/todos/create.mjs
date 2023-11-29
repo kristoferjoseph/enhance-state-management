@@ -14,7 +14,7 @@ export default function TodosCreate({ html, state }) {
     Todos
   </legend>
   <form
-    action="/todos"
+    action="/"
     method="POST"
   >
     <div

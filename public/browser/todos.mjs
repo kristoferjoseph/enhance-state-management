@@ -1065,7 +1065,7 @@ function TodosItem({ html, state }) {
 
   return html`
     <form
-     action="/todos/${key}"
+      action="/todos/${key}"
      class="
       flex
       flex-grow
