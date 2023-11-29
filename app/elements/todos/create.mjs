@@ -9,8 +9,7 @@ export default function TodosCreate({ html, state }) {
   `
 
   return html`
-<fieldset
->
+<fieldset>
   <legend class="text2 mb1">
     Todos
   </legend>
@@ -41,7 +40,7 @@ export default function TodosCreate({ html, state }) {
         required
       >
     </div>
-
-    <form action="/todos"></form>
+  </form>
+</fieldset>
   `
 }

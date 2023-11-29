@@ -1,5 +1,5 @@
 export default function TodosItem({ html, state }) {
-  const { attrs } = state
+  const { attrs={} } = state
   const { created='', key='', text='' } = attrs
   const checked = Object.keys(attrs).includes('completed')
     ? 'checked'

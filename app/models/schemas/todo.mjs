@@ -6,8 +6,9 @@ export const Todo = {
       "type": "string",
       "required": "true"
     },
-    "content": {
-      "type": "string"
+    "created": {
+      "type": "string",
+      "format": "date"
     },
     "completed": {
       "type": "boolean"

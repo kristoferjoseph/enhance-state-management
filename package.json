@@ -11,8 +11,8 @@
   "dependencies": {
     "@begin/validator": "^1.0.1",
     "@enhance/arc-plugin-enhance": "latest",
-    "@enhance/custom-element": "^1.0.1",
-    "@enhance/morphdom-mixin": "^1.0.0",
+    "@enhance/custom-element": "^1.2.1",
+    "@enhance/morphdom-mixin": "^1.1.1",
     "@enhance/store": "^1.0.1"
   },
   "eslintConfig": {
