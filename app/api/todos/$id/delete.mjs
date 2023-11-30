@@ -16,14 +16,14 @@ export async function post (req) {
     return {
       session: newSession,
       json: { todo },
-      location: '/todos'
+      location: '/'
     }
   }
   catch (err) {
     return {
       session: { ...newSession, error: err.message },
       json: { error: err.message },
-      location: '/todos'
+      location: '/'
     }
   }
 }

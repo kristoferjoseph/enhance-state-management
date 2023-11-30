@@ -6,96 +6,69 @@
 
 /*** Theme Colors ***/
 :root {
-  --light: #f8f9fa;
-  --dark: #343a40;
+  --accent-h: 208;
+  --accent-s: 100%;
+  --accent-l: 42.9%;
+  --accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+  --light: #fefefe;
+  --dark: #222222;
+  --fore: var(--dark, currentColor);
+  --back: var(--light);
+  --error-h: 0;
+  --error-s: 94.5%;
+  --error-l: 43.1%;
+  --error: hsl(var(--error-h), var(--error-s), var(--error-l));
 
-  --primary-100: hsl(211, 100%, 90%);
-  --primary-200: hsl(211, 100%, 80%);
-  --primary-300: hsl(211, 100%, 70%);
-  --primary-400: hsl(211, 100%, 60%);
-  --primary-500: hsl(211, 100%, 50%);
-  --primary-600: hsl(211, 100%, 40%);
-  --primary-700: hsl(211, 100%, 30%);
-  --primary-800: hsl(211, 100%, 20%);
-  --primary-900: hsl(211, 100%, 10%);
-    
 
-  --secondary-100: hsl(208, 7.3%, 85%);
-  --secondary-200: hsl(208, 7.3%, 75%);
-  --secondary-300: hsl(208, 7.3%, 65%);
-  --secondary-400: hsl(208, 7.3%, 55%);
-  --secondary-500: hsl(208, 7.3%, 45.7%);
-  --secondary-600: hsl(208, 7.3%, 35%);
-  --secondary-700: hsl(208, 7.3%, 25%);
-  --secondary-800: hsl(208, 7.3%, 15%);
-  --secondary-900: hsl(208, 7.3%, 5%);
-    
 
-  --success-100: hsl(134, 61.4%, 80%);
-  --success-200: hsl(134, 61.4%, 70%);
-  --success-300: hsl(134, 61.4%, 60%);
-  --success-400: hsl(134, 61.4%, 50%);
-  --success-500: hsl(134, 61.4%, 40.6%);
-  --success-600: hsl(134, 61.4%, 30%);
-  --success-700: hsl(134, 61.4%, 20%);
-  --success-800: hsl(134, 61.4%, 10%);
-  --success-900: hsl(134, 61.4%, 0%);
+  --gray-100: hsl(0, 0%, 90%);
+  --gray-200: hsl(0, 0%, 80%);
+  --gray-300: hsl(0, 0%, 70%);
+  --gray-400: hsl(0, 0%, 60%);
+  --gray-500: hsl(0, 0%, 50%);
+  --gray-600: hsl(0, 0%, 40%);
+  --gray-700: hsl(0, 0%, 30%);
+  --gray-800: hsl(0, 0%, 20%);
+  --gray-900: hsl(0, 0%, 10%);
     
+  --focus-l: 30%;
+  accent-color: var(--accent, royalblue);
+  color-scheme: light dark;
+}
 
-  --info-100: hsl(188, 77.8%, 80%);
-  --info-200: hsl(188, 77.8%, 70%);
-  --info-300: hsl(188, 77.8%, 60%);
-  --info-400: hsl(188, 77.8%, 50%);
-  --info-500: hsl(188, 77.8%, 40.6%);
-  --info-600: hsl(188, 77.8%, 30%);
-  --info-700: hsl(188, 77.8%, 20%);
-  --info-800: hsl(188, 77.8%, 10%);
-  --info-900: hsl(188, 77.8%, 0%);
-    
+:is(a, button, input, textarea, summary):focus:not(:focus-visible) {
+  outline: none;
+}
 
-  --warning-100: hsl(45, 100%, 91%);
-  --warning-200: hsl(45, 100%, 81%);
-  --warning-300: hsl(45, 100%, 71%);
-  --warning-400: hsl(45, 100%, 61%);
-  --warning-500: hsl(45, 100%, 51.4%);
-  --warning-600: hsl(45, 100%, 41%);
-  --warning-700: hsl(45, 100%, 31%);
-  --warning-800: hsl(45, 100%, 21%);
-  --warning-900: hsl(45, 100%, 11%);
-    
+:is(a, button, input, textarea, summary):focus-visible {
+  outline: max(var(--focus-size, 1px), 1px) solid var(--accent, royalblue);
+  outline-offset: var(--focus-offset, 0);
+  box-shadow: 0 0 0 max(var(--focus-size, 3px), 3px) hsl(var(--accent-h), var(--accent-s), calc(var(--accent-l) + var(--focus-l)))
+  ;
+}
 
-  --error-100: hsl(354, 70.5%, 93%);
-  --error-200: hsl(354, 70.5%, 83%);
-  --error-300: hsl(354, 70.5%, 73%);
-  --error-400: hsl(354, 70.5%, 63%);
-  --error-500: hsl(354, 70.5%, 53.5%);
-  --error-600: hsl(354, 70.5%, 43%);
-  --error-700: hsl(354, 70.5%, 33%);
-  --error-800: hsl(354, 70.5%, 23%);
-  --error-900: hsl(354, 70.5%, 13%);
-    
+:is(a, button, input, textarea, summary):not(:focus):not(:placeholder-shown):invalid {
+  outline: max(var(--focus-size, 1px), 1px) solid var(--error, crimson);
+  outline-offset: var(--focus-offset, 0);
+  box-shadow: 0 0 0 3px hsl(var(--error-h), var(--error-s), calc(var(--error-l) + var(--focus-l)));
+}
 
-  --grey-100: hsl(0, 0%, 86%);
-  --grey-200: hsl(0, 0%, 76%);
-  --grey-300: hsl(0, 0%, 66%);
-  --grey-400: hsl(0, 0%, 56%);
-  --grey-500: hsl(0, 0%, 46.7%);
-  --grey-600: hsl(0, 0%, 36%);
-  --grey-700: hsl(0, 0%, 26%);
-  --grey-800: hsl(0, 0%, 16%);
-  --grey-900: hsl(0, 0%, 6%);
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-h: 208;
+    --accent-s: 100%;
+    --accent-l: 62%;
+    --error-h: 0;
+    --error-s: 94.5%;
+    --error-l: 62%;
+    --focus-l: -30%;
+    --fore: var(--light);
+    --back: var(--dark);
     
-  --crimson: #eb0052;
-  --muted: #6c757d;
-  --white: #fff;
+  }
 }
 
 
-/*** Custom Properties ***/
-:root {
-  --gradient:linear-gradient(var(--primary), var(--secondary));/* gradient */
-}
-  
 
 /*** Type Scale ***/
 :root {
@@ -142,9 +115,6 @@
 html:focus-within {
   scroll-behavior: smooth;
 }
-body {
-  min-height: 100vh;
-}
 audio,
 canvas,
 embed,
@@ -156,6 +126,7 @@ svg,
 video {
   display: block;
   max-width: 100%;
+  block-size: auto;
 }
 button,
 input,
@@ -202,6 +173,9 @@ table {
 textarea {
   vertical-align: top;
   overflow: auto;
+}
+dialog {
+  margin: auto;
 }
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
@@ -485,10 +459,8 @@ body {
 .sb-auto{block-size:auto}
 .sb-100{block-size:100%}
 .sb-min-0{min-block-size:0}
-.sb-min-none{min-block-size:none}
 .sb-min-100{min-block-size:100%}
 .sb-max-0{max-block-size:0}
-.sb-max-none{max-block-size:none}
 .sb-max-100{max-block-size:100%}
 .sb-100vw{block-size:100vw}
 .sb-100vh{block-size:100vh}
@@ -496,10 +468,8 @@ body {
 .si-auto{inline-size:auto}
 .si-100{inline-size:100%}
 .si-min-0{min-inline-size:0}
-.si-min-none{min-inline-size:none}
 .si-min-100{min-inline-size:100%}
 .si-max0{max-inline-size:0}
-.si-max-none{max-inline-size:none}
 .si-max-100{max-inline-size:100%}
 .si-100vw{inline-size:100vw}
 .si-100vh{inline-size:100vh}
@@ -1097,10 +1067,8 @@ body {
 .sb-auto-lg{block-size:auto}
 .sb-100-lg{block-size:100%}
 .sb-min-0-lg{min-block-size:0}
-.sb-min-none-lg{min-block-size:none}
 .sb-min-100-lg{min-block-size:100%}
 .sb-max-0-lg{max-block-size:0}
-.sb-max-none-lg{max-block-size:none}
 .sb-max-100-lg{max-block-size:100%}
 .sb-100vw-lg{block-size:100vw}
 .sb-100vh-lg{block-size:100vh}
@@ -1108,10 +1076,8 @@ body {
 .si-auto-lg{inline-size:auto}
 .si-100-lg{inline-size:100%}
 .si-min-0-lg{min-inline-size:0}
-.si-min-none-lg{min-inline-size:none}
 .si-min-100-lg{min-inline-size:100%}
 .si-max0-lg{max-inline-size:0}
-.si-max-none-lg{max-inline-size:none}
 .si-max-100-lg{max-inline-size:100%}
 .si-100vw-lg{inline-size:100vw}
 .si-100vh-lg{inline-size:100vh}

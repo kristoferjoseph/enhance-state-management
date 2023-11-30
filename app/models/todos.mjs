@@ -16,9 +16,9 @@ const getTodo = async function (key) {
 }
 
 const getTodos = async function () {
-  const pages = await data.page({
+  const pages = data.page({
     table: 'todos',
-    limit: 2
+    limit: 25
   })
 
   let todos = []

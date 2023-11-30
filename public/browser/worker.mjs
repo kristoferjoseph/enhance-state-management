@@ -12,7 +12,7 @@ async function stateMachine ({ data }) {
   case CREATE:
     try {
       const response = await fetch(
-        '/todos', {
+        '/', {
           body: payload,
           credentials: 'same-origin',
           headers: {
@@ -84,7 +84,7 @@ async function stateMachine ({ data }) {
   case LIST:
     try {
       const result = await (await fetch(
-        '/todos', {
+        '/', {
           credentials: 'same-origin',
           headers: {
             'Accept': 'application/json',

@@ -6,20 +6,6 @@ import TodosItem from '../elements/todos/item.mjs'
 import API from './api.mjs'
 const api = API()
 
-class EnhanceElement extends MorphdomMixin(CustomElement) {
-  keys = []
-  constructor() {
-    super()
-    this.api = api
-    this.store = api.store
-    this.store.subscribe(this.process, this.keys)
-  }
-
-  disconnectedCallback() {
-    this.store.unsubscribe(this.process)
-  }
-}
-
 class TodosCreateForm extends HTMLElement {
   constructor() {
     super()
@@ -48,10 +34,13 @@ class TodosCreateForm extends HTMLElement {
 }
 customElements.define('todos-create', TodosCreateForm)
 
-class TodosListElement extends EnhanceElement {
+class TodosListElement extends MorphdomMixin(CustomElement) {
   keys = ['todos']
   constructor() {
     super()
+    this.api = api
+    this.store = api.store
+    this.store.subscribe(this.process, this.keys)
   }
 
   connectedCallback() {
@@ -61,10 +50,14 @@ class TodosListElement extends EnhanceElement {
   render(args) {
     return TodosList(args)
   }
+
+  disconnectedCallback() {
+    this.store.unsubscribe(this.process)
+  }
 }
 customElements.define('todos-list', TodosListElement)
 
-class TodosItemElement extends EnhanceElement {
+class TodosItemElement extends MorphdomMixin(CustomElement) {
   constructor() {
     super()
     this.api = api
@@ -109,7 +102,6 @@ class TodosItemElement extends EnhanceElement {
 
   updateChecked(e) {
     e && e.preventDefault()
-    // 👆That doesn't really work. Would be nice to be able to set the checked state _before_ making the api call.
     this.update()
   }
 
@@ -124,3 +116,4 @@ class TodosItemElement extends EnhanceElement {
 
 }
 customElements.define('todos-item', TodosItemElement)
+
