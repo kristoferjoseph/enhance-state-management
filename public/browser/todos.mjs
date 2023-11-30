@@ -1072,7 +1072,6 @@ function TodosItem({ html, state }) {
     <style>
       :host {
         display: flex;
-        background-color: hsl(var(--accent-h) 10% 10%)
       }
       .bg-transparent {
         background-color: transparent;

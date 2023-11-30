@@ -3,9 +3,6 @@ export default function TodosCreate({ html, state }) {
 
   return html`
 <style>
-  :host {
-    background-color: hsl(var(--accent-h) 10% 10%)
-  }
   .bg-transparent {
     background-color: transparent;
   }
