@@ -6,35 +6,45 @@ export default function TodosItem({ html, state }) {
     : ''
 
   return html`
+    <style>
+      :host {
+        display: flex;
+        background-color: hsl(var(--accent-h) 10% 10%)
+      }
+      .bg-transparent {
+        background-color: transparent;
+      }
+    </style>
     <form
-      action="/todos/${key}"
+     action="/todos/${key}"
      class="
       flex
       flex-grow
-      items-center
+      justify-content-around
+      pi0
      "
      method="POST"
     >
       <input
         id="check-${key}"
-        class="
-         inline-block
-         mr1
-         radius1
-        "
-        name="completed"
         type="checkbox"
+        name="completed"
+        class="
+         flex
+         items-center
+        "
         ${checked}
-
-      >
+      ></input>
       <input
         type="text"
         name="text"
         value="${text}"
         class="
           flex-grow
-          mr1
+          mi0
           p-2
+          radius0
+          bg-transparent
         "
       >
       <input

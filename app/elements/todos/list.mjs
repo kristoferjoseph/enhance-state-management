@@ -6,7 +6,6 @@ export default function TodosList({ html, state }) {
     return html`
     <li id="${key}">
       <todos-item
-        class="flex"
         created="${created}"
         ${completed ? 'completed' : ''}
         key="${key}"
@@ -16,8 +15,14 @@ export default function TodosList({ html, state }) {
   `})
     .join('\n')
   return html`
-    <ul>
-      ${todos.length ? items : `<li>Add a todo.</li>`}
+    <ul
+      class="
+       grid
+       gap0
+       list-none
+      "
+    >
+      ${todos.length ? items : `<li>Add a todo</li>`}
     </ul>
   `
 }

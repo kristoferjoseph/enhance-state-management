@@ -1,37 +1,35 @@
 export default function TodosCreate({ html, state }) {
   const { instanceID='' } = state
-  const borderClasses = `
-    border1
-    border-solid
-    border-current
-    radius0
-    overflow-hidden
-  `
 
   return html`
-<fieldset>
-  <legend class="text2 mb1">
-    Todos
-  </legend>
-  <form
-    action="/"
-    method="POST"
-  >
-    <div
-      class="
-        flex
-        flex-col
-      "
+<style>
+  :host {
+    background-color: hsl(var(--accent-h) 10% 10%)
+  }
+  .bg-transparent {
+    background-color: transparent;
+  }
+</style>
+<form
+  action="/"
+  method="POST"
+  class="flex"
+>
+    <label
+      for="text-${instanceID}"
+      class="flex-grow"
     >
-      <label
-        for="text-${instanceID}"
-      >
-        Text
-      </label>
       <input
         id="text-${instanceID}"
         class="
-         ${borderClasses}
+         si-100
+         p-2
+         border1
+         border-solid
+         border-current
+         radius0
+         overflow-hidden
+         bg-transparent
         "
         name="text"
         type="text"
@@ -39,8 +37,7 @@ export default function TodosCreate({ html, state }) {
         autofocus
         required
       >
-    </div>
-  </form>
-</fieldset>
+    </label>
+</form>
   `
 }
